@@ -43,12 +43,9 @@ while True:
                 # put box in cam
                 cv2.rectangle(img, (x1, y1), (x2, y2), (255, 0, 255), 3)
 
-                # confidence
-                print("Confidence --->",confidence)
-
-                # class name
+                # log results
                 cls = int(box.cls[0])
-                print("Class name -->", classNames[cls])
+                print('Class: {} \t Confidence: {}'.format(classNames[cls], confidence))
 
                 # object details
                 org = [x1, y1]
@@ -59,12 +56,8 @@ while True:
 
                 cv2.putText(img, classNames[cls], org, font, fontScale, color, thickness)
             else:
-                # confidence
-                print("Confidence --->",confidence)
-
-                # class name
                 cls = int(box.cls[0])
-                print("Class name -->", classNames[cls])
+                print('Class: {} \t Confidence: {}'.format(classNames[cls], confidence))
 
     cv2.imshow('Webcam', img)
     if cv2.waitKey(1) == ord('q'):
